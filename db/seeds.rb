@@ -5,3 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all
+Post.destroy_all
+puts "there are now #{User.count} users and #{Post.count} posts."
+10.times do
+  salt = BCrypt::Engine.generate_salt
+  hash = BCrypt::Engine.hash_secret(Faker::Internet.password, salt)
+  user = User.new(
+    email: Faker::Internet.email,
+    password_salt: salt,
+    password_hash: hash
+  )
+  user.send :password=, "buffer"
+  user.save!(validate: false)
+
+  3.times do
+    Post.create(
+      title: Faker::Name.title,
+      description: Faker::Lorem.paragraph,
+      price: rand(100).to_f,
+      user: user
+    )
+  end
+end
+puts "there are now #{User.count} users and #{Post.count} posts."
+
