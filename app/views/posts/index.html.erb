@@ -4,3 +4,5 @@
     <li><%= link_to post.title, post %></li>
   <% end %>
 </ul>
+
+<%= button_to "Create a post", new_post_path, method: :get %>
