@@ -1,0 +1,8 @@
+<h1><%= @post.title %> Page</h1>
+<div>
+  <%= @post.description %>
+</div>
+<strong><%= @post.price %></strong>
+<div>
+  Posted by <%= mail_to @post.user.email %>
+</div>
