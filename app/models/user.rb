@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :password
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :password, presence: true, confirmation: true
   validates :email, presence: true, uniqueness: true

@@ -7,8 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-Post.destroy_all
-puts "there are now #{User.count} users and #{Post.count} posts."
+
 10.times do
   salt = BCrypt::Engine.generate_salt
   hash = BCrypt::Engine.hash_secret(Faker::Internet.password, salt)
