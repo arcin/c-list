@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   resources :posts
   resources :sessions
   resources :users
+  resources :users do
+    member do
+      get :posts
+    end
+  end
 end
