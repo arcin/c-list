@@ -19,7 +19,7 @@ Category.destroy_all
   user.send :password=, "buffer"
   user.save!(validate: false)
 
-  category = Category.create(name: Faker::Commerce.department)
+  category = Category.create(name: Faker::Commerce.product_name)
 
   3.times do
     Post.create(
