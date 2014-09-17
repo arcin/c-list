@@ -14,3 +14,10 @@
  *= require_self
  *= require bootstrap.min
  */
+
+.center {
+  text-align: center;
+}
+.center form {
+  display: inline-block;
+}

@@ -8,21 +8,24 @@
 </head>
 <body>
 
-<% if current_user %>
-  You are logged in as <%= current_user.email %>
-  <%= link_to "Logout", log_out_path %>
-  <div>
-    <%= link_to "My Posts", posts_user_path(current_user) %>
-  </div>
-<% else %>
-  <%= link_to "Login", log_in_path %> | <%= link_to "Sign Up", sign_up_path %>
-<% end %>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, class: "flash-#{name}" %>
-<% end %>
+<div class="container">
+  <% if current_user %>
+    You are logged in as <%= current_user.email %>
+    <%= link_to "Logout", log_out_path %>
+    <div>
+      <%= link_to "My Posts", posts_user_path(current_user) %>
+    </div>
+  <% else %>
+    <%= link_to "Login", log_in_path %> | <%= link_to "Sign Up", sign_up_path %>
+  <% end %>
 
-<%= yield %>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "flash-#{name}" %>
+  <% end %>
+
+  <%= yield %>
+</div>
 
 </body>
 </html>
