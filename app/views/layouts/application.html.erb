@@ -21,7 +21,9 @@
   <% end %>
 
   <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "flash-#{name}" %>
+    <%= content_tag :div, msg, class: "flash-#{name} alert alert-success" if name == 'notice' %>
+    <%= content_tag :div, msg, class: "flash-#{name} alert alert-danger" if name == 'alert' %>
+
   <% end %>
 
   <%= yield %>

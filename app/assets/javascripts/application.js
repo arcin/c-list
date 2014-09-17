@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+setTimeout(handleFlashNotice, 500);
+
+function handleFlashNotice(){
+  console.log('hello')
+  $('.flash-notice').fadeOut();
+};
