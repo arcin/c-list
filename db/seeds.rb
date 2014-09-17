@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-
+Category.destroy_all
 10.times do
   salt = BCrypt::Engine.generate_salt
   hash = BCrypt::Engine.hash_secret(Faker::Internet.password, salt)
@@ -19,14 +19,17 @@ User.destroy_all
   user.send :password=, "buffer"
   user.save!(validate: false)
 
+  category = Category.create(name: Faker::Commerce.department)
+
   3.times do
     Post.create(
       title: Faker::Name.title,
       description: Faker::Lorem.paragraph,
       price: rand(100).to_f,
-      user: user
+      user: user,
+      category: category
     )
   end
 end
-puts "there are now #{User.count} users and #{Post.count} posts."
+puts "there are now #{User.count} users, #{Post.count} posts, and #{Category.count} categories."
 
