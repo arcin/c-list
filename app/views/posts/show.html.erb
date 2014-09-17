@@ -6,3 +6,8 @@
 <div>
   Posted by <%= mail_to @post.user.email %>
 </div>
+
+<% if post_owner? @post %>
+  <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %> |
+  <%= link_to "Delete", @post, method: :delete, class: "btn btn-danger" %>
+<% end %>
