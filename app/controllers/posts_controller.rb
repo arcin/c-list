@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     if session[:user_id]
       @post = Post.new
     else
-      redirect_to posts_path, notice: "You must be signed in to create a Post!"
+      redirect_to posts_path, alert: "You must be signed in to create a Post!"
     end
   end
 
