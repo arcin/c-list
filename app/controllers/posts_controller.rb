@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :description, :price)
+    params.require(:post).permit(:title, :description, :price, :category_id)
   end
 
   def set_category

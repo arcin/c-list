@@ -3,7 +3,7 @@
     <%= form_for [@category, @post] do |f|%>
 
       <%= render partial: 'shared/model_form_errors', locals: { model: @post } %>
-      <%= f.hidden_field :category_id, value: @category.id %>
+      <%= f.hidden_field :category_id, value: @category.id if @category %>
 
       <div class="form-group">
         <%= f.label :title %>
