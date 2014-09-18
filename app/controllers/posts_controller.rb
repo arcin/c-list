@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :destroy, :edit, :update]
+  before_action :set_category, only: [:index, :new, :create]
   def index
-    @posts = Post.all
+    @posts = @category.posts
   end
 
   def show
-
   end
 
   def new
@@ -17,7 +17,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-
   end
 
   def create
@@ -44,6 +43,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :description, :price)
+  end
+
+  def set_category
+    @category = Category.find(params[:category_id])
   end
 
   def set_post
