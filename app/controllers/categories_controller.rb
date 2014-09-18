@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :posts]
   def index
     @categories = Category.all
   end
@@ -16,6 +16,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def posts
+    @posts = @category.posts
+    render "show"
+  end
   def create
     @category = Category.new(category_params)
     if @category.save
