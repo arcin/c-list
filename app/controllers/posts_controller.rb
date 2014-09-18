@@ -41,15 +41,15 @@ class PostsController < ApplicationController
   end
 
   private
-  def post_params
-    params.require(:post).permit(:title, :description, :price, :category_id)
-  end
+    def post_params
+      params.require(:post).permit(:title, :description, :price, :category_id)
+    end
 
-  def set_category
-    @category = Category.find(params[:category_id])
-  end
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
+    def set_post
+      @post = Post.find(params[:id])
+    end
 end
