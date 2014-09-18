@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     if session[:user_id]
       @post = Post.new
     else
-      redirect_to posts_path, alert: "You must be signed in to create a Post!"
+      redirect_to category_posts_path(@category), alert: "You must be signed in to create a Post!"
     end
   end
 
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def create
     post = current_user.posts.build(post_params)
     if post.save
-      redirect_to posts_path, notice: "your post has been successfully created!"
+      redirect_to category_posts_path(@category), notice: "Your post has been successfully created!"
     else
       render "new"
     end
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path, notice: "post successfully updated"
+      redirect_to post_path, notice: "Post successfully updated"
     else
       render "edit"
     end
